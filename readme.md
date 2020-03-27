@@ -1,4 +1,5 @@
-# Table of Contents  <!-- omit in toc -->
+<!-- omit in toc -->
+# Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
   - [Getting a list of styles](#getting-a-list-of-styles)
@@ -10,7 +11,8 @@
 
 # Installation
 In the browser:
-Because Aesthetically is a ES6 module, it's relly important to write your scripts in a module too by specifying `<script type="module">`
+<br>
+Because Aesthetically is a [module], it's really important to write your scripts in a module too by specifying `<script type="module">`.
 
 Using [jsDelivr](https://www.jsdelivr.com/):
 ```html
@@ -44,17 +46,21 @@ styles = Object.keys(Aesthetically.styles)
 Aesthetically.format("this is v cool", "double-struck")
 "this is v cool"
 ```
-Parameters: text: (String) text to transform
-            style: (String) Style to transform text to
-Returns: (String) formatted text
+***Arguments** 
+text: (String) text to transform
+style: (String) Style to transform text to
+**Returns**
+(String) formatted text
 
 ## Un-styling text
 ```javascript
 Aesthetically.unformat("𝓹𝓪𝓬𝓶𝓪𝓷 𝓲𝓼 𝓱𝓾𝓷𝓰𝓻𝔂 👾🍔")
 "pacman is hungry 👾🍔"
 ```
-Parameters: text: (String) text to transform
-Returns: (String) unstyled text
+***Arguments**
+text: (String) text to transform
+**Returns**
+(String) unstyled text
 
 ## Table of styles and support
 Not all styles support all types of characters. Some only support lowercase or uppercase. Digits indicate support for 1 - 9 while zero is listed sperately if supported.
@@ -95,4 +101,5 @@ MIT
 [This article](https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/) and [this other article](https://mathiasbynens.be/notes/javascript-encoding) were really useful for understanding the way Unicode strings work in JavaScript. 
 The [demo] uses the awesome [Bulma](https://bulma.io/) CSS framework <3.
 
-[demo]:
+[demo]: https://aesthetically.glitch.me/
+[module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules

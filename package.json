@@ -18,5 +18,13 @@
     "font"
   ],
   "author": "Joshy Nosh",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotNoshy/Aesthetically.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NotNoshy/Aesthetically/issues"
+  },
+  "homepage": "https://github.com/NotNoshy/Aesthetically#readme"
 }
