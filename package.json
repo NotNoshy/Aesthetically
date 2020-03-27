@@ -4,11 +4,12 @@
   "description": "A JavaScript module that makes text stylish.",
   "main": "aesthetically.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\"",
-    "pretty-quick": "pretty-quick"
+    "pretty-quick": "pretty-quick",
+    "build": "rollup -c",
+    "test": "mocha"
   },
   "prettier": {
-    "quoteProps": "consistent"
+    "quoteProps": "preserve"
   },
   "husky": {
     "hooks": {
@@ -17,7 +18,8 @@
   },
   "type": "module",
   "files": [
-    "aesthetically.js"
+    "dist/aesthetically.js",
+    "aesthetically"
   ],
   "keywords": [
     "text",
@@ -38,8 +40,15 @@
   "homepage": "https://github.com/NotNoshy/Aesthetically#readme",
   "dependencies": {},
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.9.0",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "husky": "^3.1.0",
     "prettier": "2.0.2",
     "pretty-quick": "^2.0.1",
-    "husky": "^3.1.0"
+    "rollup": "^2.2.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0"
   }
 }

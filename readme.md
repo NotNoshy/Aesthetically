@@ -1,5 +1,3 @@
-<!-- omit in toc -->
-
 # Table of Contents
 
 - [Table of Contents](#table-of-contents)
@@ -21,17 +19,31 @@ Check out the [demo](https://aesthetically.glitch.me/).
 
 In the browser:
 
-_Because Aesthetically is a [module], it's really important to write your scripts in a module too by specifying `<script type="module">`._
+**Using [jsDelivr](https://www.jsdelivr.com/):**
 
-Using [jsDelivr](https://www.jsdelivr.com/):
+As a normal script:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js"></script>
+```
+
+As an ES6 module:
 
 ```html
 <script type="module">
-  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0/aesthetically.min.js";
+  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js";
 </script>
 ```
 
-Self-hosted:
+**Self-hosted:**
+
+As a normal script:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js"></script>
+```
+
+As an ES6 module:
 
 ```html
 <script type="module">
@@ -39,16 +51,24 @@ Self-hosted:
 </script>
 ```
 
-Using npm:
+**Using npm:**
 
 ```bash
 $ npm i aesthetically
 ```
 
-In Node:
+**In Node:**
+
+As an ES6 module:
 
 ```javascript
-import Aesthetically from "./node_modules/aesthetically/aesthetically.js";
+import Aesthetically from "aesthetically.js";
+```
+
+As a CommonJS module:
+
+```javascript
+const Aesthetically = require("aesthetically.js");
 ```
 
 # Usage
