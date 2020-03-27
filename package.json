@@ -4,7 +4,16 @@
   "description": "A JavaScript module that makes text stylish.",
   "main": "aesthetically.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\"",
+    "pretty-quick": "pretty-quick"
+  },
+  "prettier": {
+    "quoteProps": "consistent"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "type": "module",
   "files": [
@@ -26,5 +35,12 @@
   "bugs": {
     "url": "https://github.com/NotNoshy/Aesthetically/issues"
   },
-  "homepage": "https://github.com/NotNoshy/Aesthetically#readme"
+  "homepage": "https://github.com/NotNoshy/Aesthetically#readme",
+  "dependencies": {
+    "husky": "^3.1.0"
+  },
+  "devDependencies": {
+    "prettier": "2.0.2",
+    "pretty-quick": "^2.0.1"
+  }
 }
