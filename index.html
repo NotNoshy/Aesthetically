@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Aesthetically</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+  <style>
+    button.copy {
+      background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACPUlEQVR4Xu3bTatOURQH8N8VkpeJmKGIiZGJYmBiZIqUSPkGBspA5pKJ8gGUQkrxBcy8pDtRpgzEkJIBE2/tunfgeO45Z5/n7H2v51lr+qy119r/Z6911n+dfRbMuSzM+f71ASDpHMJebFxFwN7j5dj+uwA4gdvYP7bjAes9xNkBdq0mbQAkZ/ewbmynA9erCsBOvMO2gcGWMKsKwCXcKrGLKdasCsAdXJwi2BKmVQF4hNONXRQJoARSOWuuVAQDgDgBkQJRA3KL4AacwnFsp1ebnVOvunR/4zOe4jF+dBmk38cqggfwBAf7OK2g8wYnl5q5Qa1wzlMg/duvsbvCxnJcJPKUSNyXNqMxTsANXMmJrKLudVwtDUDiDPsqbirH1Vuk9FxRxjgBPycwxuf4mBPpCLp7cLSxToptfWkAUvVtyhmkOlJTEn1/MMFh68xjjBMQAMQJiBSIGhBFsIFAPAXiMRh9QDRC0QnW7IOXXptFKxxc4F8EggwFHS48EAk6HHQ46HDQ4aDDQYf/RiDmATEPiHnA/z0POIJdjcL2Aa8mND0z2QnmUPkAYBZb4TgBGQhECkQKzCAbzMgAkQKRApECszcQyakB37Epx6Ci7jdsGTIWz4nxxYTraTn2JXWf4VhpAC7gbsldTLH2edwvDUB69ZQ+p0lToLUk6UXpua6Auj6c7LJf/j3dxryGy9ja16iQ3lfcRLonnG6KtspYACw72YzD2LEK3wv8wicsIhXmXjI2AL2criWluQfgD2jR6kGIfRxlAAAAAElFTkSuQmCC);
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      cursor: pointer;
+      box-shadow: 0px 0px 0px transparent;
+      border: 0px solid transparent;
+      text-shadow: 0px 0px 0px transparent;
+      background-color: white;
+    }
+
+    button.copy:hover {
+      box-shadow: 0px 0px 0px transparent;
+      border: 0px solid transparent;
+      text-shadow: 0px 0px 0px transparent;
+      background-color: white;
+    }
+
+    body {
+      word-wrap: normal
+    }
+  </style>
+
+  <script type="module">
+    import Aesthetically from "./aesthetically.js";
+    window.onload = function () {
+      const $out = document.getElementById("out");
+      const $input = document.getElementById("input");
+
+
+      function style() {
+
+        function copy(event) {
+          try {
+            const $element = event.toElement.parentElement.children[1]
+              || event.toElement.parentElement.parentElement.children[1];
+            const range = document.createRange();
+            range.selectNode($element);
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+          } finally {
+            // Remove the selection
+            window.getSelection().removeAllRanges();
+          }
+        }
+
+        while ($out.firstChild) {
+          $out.firstChild.remove();
+        }
+        if ($input.value.length > 0) {
+          for (const style of Object.keys(Aesthetically.styles)) {
+            const $box = document.createElement("div");
+            const $descriptor = document.createElement("div");
+            const $text = document.createElement("div");
+            const $copycol = document.createElement("div");
+            const $copyi = document.createElement("button");
+
+            $box.setAttribute("class", "columns is-mobile")
+
+            $descriptor.setAttribute("class", "column is-3");
+            $descriptor.textContent = style;
+
+            $text.setAttribute("class", "column");
+            let input = $input.value;
+            if (typeof Aesthetically.styles[style]["lower"] === "undefined") {
+              input = $input.value.toUpperCase();
+            }
+            else if (typeof Aesthetically.styles[style]["upper"] === "undefined") {
+              input = $input.value.toLowerCase();
+            }
+            $text.textContent = Aesthetically.format(input, style);
+
+            $copycol.setAttribute("class", "column is-narrow");
+            $copycol.addEventListener("click", copy)
+            $copyi.setAttribute("class", "copy");
+            $copycol.appendChild($copyi);
+
+            $box.appendChild($descriptor);
+            $box.appendChild($text);
+            $box.appendChild($copycol);
+            $out.appendChild($box);
+          }
+        }
+      }
+
+      document.getElementById("submit").addEventListener("click", style);
+    }
+  </script>
+
+</head>
+
+<body>
+  <div class="container">
+    <section class="hero is-link">
+      <div class="hero-body">
+        <h1 class="title">
+          Aesthetically
+        </h1>
+        <h2 class="subtitle">
+          A JavaScript library that makes text stylish.
+        </h2>
+      </div>
+    </section>
+    <section class="section">
+      <div class="field">
+        <div class="control">
+          <textarea class="textarea" id="input" placeholder="Your amazing words"></textarea>
+          <br>
+          <button class="button is-link is-light" id="submit">Submit</button>
+        </div>
+      </div>
+    </section>
+    <div class='container is-fluid' id="out">
+    </div>
+  </div>
+</body>
+
+</html>

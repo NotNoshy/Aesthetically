@@ -1,0 +1,22 @@
+{
+  "name": "aesthetically",
+  "version": "0.0.1",
+  "description": "A JavaScript module that makes text stylish.",
+  "main": "aesthetically.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "files": [
+    "aesthetically.js"
+  ],
+  "keywords": [
+    "text",
+    "aestetic",
+    "style",
+    "unicode",
+    "font"
+  ],
+  "author": "Joshy Nosh",
+  "license": "MIT"
+}
