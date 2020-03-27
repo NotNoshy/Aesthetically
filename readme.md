@@ -17,7 +17,6 @@ Check out the [demo](https://aesthetically.glitch.me/).
 
 # Installation
 
--
 **Using [jsDelivr](https://www.jsdelivr.com/):**
 
 ```html
