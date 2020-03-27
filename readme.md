@@ -11,8 +11,9 @@
 
 # Installation
 In the browser:
-<br>
-Because Aesthetically is a [module], it's really important to write your scripts in a module too by specifying `<script type="module">`.
+
+
+_Because Aesthetically is a [module], it's really important to write your scripts in a module too by specifying `<script type="module">`._
 
 Using [jsDelivr](https://www.jsdelivr.com/):
 ```html
@@ -32,7 +33,7 @@ $ npm i --save aesthetically
 ```
 In Node:
 ```javascript
-import Aesthetically from "./node_modules/aesthetically.js"
+import Aesthetically from "./node_modules/aesthetically/aesthetically.js"
 ```
 
 # Usage
@@ -46,10 +47,14 @@ styles = Object.keys(Aesthetically.styles)
 Aesthetically.format("this is v cool", "double-struck")
 "this is v cool"
 ```
-***Arguments** 
+**Arguments** 
+
 text: (String) text to transform
+
 style: (String) Style to transform text to
+
 **Returns**
+
 (String) formatted text
 
 ## Un-styling text
@@ -57,15 +62,18 @@ style: (String) Style to transform text to
 Aesthetically.unformat("𝓹𝓪𝓬𝓶𝓪𝓷 𝓲𝓼 𝓱𝓾𝓷𝓰𝓻𝔂 👾🍔")
 "pacman is hungry 👾🍔"
 ```
-***Arguments**
+**Arguments**
+
 text: (String) text to transform
+
 **Returns**
+
 (String) unstyled text
 
 ## Table of styles and support
 Not all styles support all types of characters. Some only support lowercase or uppercase. Digits indicate support for 1 - 9 while zero is listed sperately if supported.
 
-[Mathematical Alphanumeric Symbols](https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols)
+[Mathematical Alphanumeric Symbols]
 
 | Style                 | Support                    | Sample                                                                                 |
 | --------------------- | -------------------------- | -------------------------------------------------------------------------------------- |
@@ -83,7 +91,7 @@ Not all styles support all types of characters. Some only support lowercase or u
 | monospace             | upper, lower, digits, zero | 𝚜𝚙𝚑𝚒𝚗𝚡 𝚘𝚏 𝚋𝚕𝚊𝚌𝚔 𝚚𝚞𝚊𝚛𝚝𝚣, 𝚓𝚞𝚍𝚐𝚎 𝚖𝚢 𝚟𝚘𝚠 𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿 |
 | double-struck         | upper, lower, digits, zero | 𝕤𝕡𝕙𝕚𝕟𝕩 𝕠𝕗 𝕓𝕝𝕒𝕔𝕜 𝕢𝕦𝕒𝕣𝕥𝕫, 𝕛𝕦𝕕𝕘𝕖 𝕞𝕪 𝕧𝕠𝕨 𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡 |
 
-[Enclosed Alphanumerics](https://en.wikipedia.org/wiki/Enclosed_Alphanumerics) & [Supplement](https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement)
+[Enclosed Alphanumerics] & [Supplement]
 
 | Style               | Support                    | Sample                                                              |
 | ------------------- | -------------------------- | ------------------------------------------------------------------- |
@@ -100,6 +108,10 @@ MIT
 # Acknowledgements
 [This article](https://dmitripavlutin.com/what-every-javascript-developer-should-know-about-unicode/) and [this other article](https://mathiasbynens.be/notes/javascript-encoding) were really useful for understanding the way Unicode strings work in JavaScript. 
 The [demo] uses the awesome [Bulma](https://bulma.io/) CSS framework <3.
+
+[Mathematical Alphanumeric Symbols]: https://en.wikipedia.org/wiki/Mathematical_Alphanumeric_Symbols
+[Enclosed Alphanumerics]: https://en.wikipedia.org/wiki/Enclosed_Alphanumerics
+[Supplement]: https://en.wikipedia.org/wiki/Enclosed_Alphanumeric_Supplement
 
 [demo]: https://aesthetically.glitch.me/
 [module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
