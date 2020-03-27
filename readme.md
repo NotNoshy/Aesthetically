@@ -2,6 +2,8 @@
 
 # Table of Contents
 
+- [Table of Contents](#table-of-contents)
+- [Demo](#demo)
 - [Installation](#installation)
 - [Usage](#usage)
   - [Getting a list of styles](#getting-a-list-of-styles)
@@ -10,6 +12,10 @@
   - [Table of styles and support](#table-of-styles-and-support)
 - [Acknowledgements](#acknowledgements)
 - [License](#license)
+
+# Demo
+
+Check out the [demo](https://aesthetically.glitch.me/).
 
 # Installation
 
@@ -21,7 +27,7 @@ Using [jsDelivr](https://www.jsdelivr.com/):
 
 ```html
 <script type="module">
-  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0.1/aesthetically.js";
+  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0/aesthetically.min.js";
 </script>
 ```
 
