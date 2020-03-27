@@ -17,17 +17,8 @@ Check out the [demo](https://aesthetically.glitch.me/).
 
 # Installation
 
-In the browser:
-
+-
 **Using [jsDelivr](https://www.jsdelivr.com/):**
-
-As a normal script:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js"></script>
-```
-
-As an ES6 module:
 
 ```html
 <script type="module">
@@ -36,14 +27,6 @@ As an ES6 module:
 ```
 
 **Self-hosted:**
-
-As a normal script:
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js"></script>
-```
-
-As an ES6 module:
 
 ```html
 <script type="module">
