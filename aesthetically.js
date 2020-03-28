@@ -1,5 +1,5 @@
 "use strict";
-export default class Aesthetically {
+class Aesthetically {
   static styles = {
     "serf-bold": {
       "upper": 0x1d400,
@@ -45,7 +45,7 @@ export default class Aesthetically {
         "B": 0x212c,
         "EF": 0x2130,
         "H": 0x210b,
-        "J": 0x2100,
+        "I": 0x2110,
         "L": 0x2112,
         "M": 0x2133,
         "R": 0x211b,
@@ -64,14 +64,9 @@ export default class Aesthetically {
       "exceptions": {
         "C": 0x212d,
         "H": 0x210c,
-        "J": 0x2111,
+        "I": 0x2111,
         "R": 0x211c,
         "Z": 0x2128,
-        "M": 0x2133,
-        "R": 0x211b,
-        "e": 0x212f,
-        "g": 0x210a,
-        "o": 0x2134,
       },
     },
     "fraktur-bold": {
@@ -163,7 +158,6 @@ export default class Aesthetically {
     */
   static format(text, style) {
     let styledText;
-
     if (style in Aesthetically.#styleDict) {
       styledText = convertText(text, Aesthetically.#styleDict[style]);
     } else {
@@ -203,7 +197,7 @@ export default class Aesthetically {
     if (hasExceptions) {
       exceptions = [];
       Object.keys(styleInfo["exceptions"]).forEach((key) => {
-        exceptions.push([...key]);
+        exceptions = [...exceptions, ...key];
       });
       for (const chars in styleInfo["exceptions"]) {
         const offset = styleInfo["exceptions"][chars];
@@ -214,6 +208,18 @@ export default class Aesthetically {
           i++;
         }
       }
+    }
+
+    if (
+      !styleInfo.hasOwnProperty("upper") &&
+      styleInfo.hasOwnProperty("lower")
+    ) {
+      styleInfo["upper"] = styleInfo["lower"];
+    } else if (
+      !styleInfo.hasOwnProperty("lower") &&
+      styleInfo.hasOwnProperty("upper")
+    ) {
+      styleInfo["lower"] = styleInfo["upper"];
     }
 
     for (const charSet in Aesthetically.#charaters) {
@@ -240,8 +246,9 @@ export default class Aesthetically {
     */
   static unformat(text) {
     if (typeof Aesthetically.#styleReverseMap === "undefined")
-      Aesthetically.generateReverseMap();
+      Aesthetically._generateReverseMap();
     let unformatted = "";
+
     for (const char of text) {
       unformatted += Aesthetically.#styleReverseMap.get(char) || char;
     }
@@ -256,6 +263,10 @@ export default class Aesthetically {
     let styles = {};
     if (styleList.length === 0) {
       styles = Aesthetically.styles;
+      for (const normalSet in Aesthetically.#charaters) {
+        const offset = Aesthetically.#charaters[normalSet]["lower-bound"];
+        styles["normal"] = offset;
+      }
     } else {
       styleList.forEach((s) => {
         styles.push(Aesthetically.styles[s]);
@@ -275,3 +286,4 @@ export default class Aesthetically {
     }
   }
 }
+export default Aesthetically;

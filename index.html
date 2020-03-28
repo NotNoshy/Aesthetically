@@ -37,7 +37,7 @@
     </style>
 
     <script type="module">
-      import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js";
+      import Aesthetically from "/dist/aesthetically.js";
       window.onload = function () {
         const $out = document.getElementById("out");
         const $input = document.getElementById("input");
@@ -62,6 +62,23 @@
             $out.firstChild.remove();
           }
           if ($input.value.length > 0) {
+            let input = $input.value;
+            if (input != Aesthetically.unformat(input)) {
+              input = Aesthetically.unformat(input);
+              const $article = document.createElement("article");
+              $article.setAttribute("class", "message");
+              const $message = document.createElement("div");
+              $message.setAttribute(
+                "class",
+                "message-body is-family-monospace"
+              );
+
+              $message.textContent = input;
+
+              $article.appendChild($message);
+              $out.appendChild($article);
+            }
+
             for (const style of Object.keys(Aesthetically.styles)) {
               const $box = document.createElement("div");
               const $descriptor = document.createElement("div");
@@ -75,13 +92,12 @@
               $descriptor.textContent = style;
 
               $text.setAttribute("class", "column");
-              let input = $input.value;
               if (typeof Aesthetically.styles[style]["lower"] === "undefined") {
-                input = $input.value.toUpperCase();
+                input = input.toUpperCase();
               } else if (
                 typeof Aesthetically.styles[style]["upper"] === "undefined"
               ) {
-                input = $input.value.toLowerCase();
+                input = input.toLowerCase();
               }
               $text.textContent = Aesthetically.format(input, style);
 
@@ -128,7 +144,7 @@
           </div>
         </div>
       </section>
-      <div class="container is-fluid" id="out"></div>
+      <div class="container is-fluid is-large" id="out"></div>
     </div>
     <div
       class="glitchButton"

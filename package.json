@@ -2,11 +2,18 @@
   "name": "aesthetically",
   "version": "0.0.4",
   "description": "A JavaScript module that makes text stylish.",
-  "main": "aesthetically.js",
+  "main": "dist/aesthetically.umd.js",
+  "exports": {
+    "browser": "dist/aesthetically.js",
+    "node": {
+      "import": "dist/aesthetically.js",
+      "require": "dist/aesthetically.umd.js"
+    }
+  },
   "scripts": {
     "pretty-quick": "pretty-quick",
     "build": "rollup -c",
-    "test": "mocha"
+    "test": "echo \"No test specified\""
   },
   "prettier": {
     "quoteProps": "preserve"
@@ -16,10 +23,29 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
+  "babel": {
+    "presets": [
+      [
+        "@babel/env",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
   "type": "module",
   "files": [
     "dist/aesthetically.js",
-    "aesthetically"
+    "dist/aesthetically.umd.js",
+    "aesthetically.js"
   ],
   "keywords": [
     "text",
