@@ -23,14 +23,14 @@ As an ES6 module:
 
 ```html
 <script type="module">
-  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.js";
+  import Aesthetically from "https://cdn.jsdelivr.net/npm/aesthetically@0/dist/aesthetically.js";
 </script>
 ```
 
 As a normal script:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/aesthetically@0.0/dist/aesthetically.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aesthetically@0/dist/aesthetically.umd.js"></script>
 ```
 
 **Self-hosted:**
