@@ -121,7 +121,7 @@ class Aesthetically {
   /* 
     The list of characters Aesthetically can handle
     */
-  static #charaters = {
+  static #characters = {
     "lower": {
       "chars": "abcdefghijklmnopqrstuvwxyz",
       "lower-bound": 0x61,
@@ -149,12 +149,11 @@ class Aesthetically {
     */
   static #styleReverseMap;
 
-  /* 
+  /**
     Style text
-    Parameters: text: (String) text to transform
-                style: (String) Style to transform text to
-                e.g. "double-struck"
-    Returns: (String) formatted text
+    @param {string} text - text to transform
+    @param {string} style - style to transform text to (e.g. "double-struck")
+    @returns {string} - formatted text
     */
   static format(text, style) {
     let styledText;
@@ -177,17 +176,17 @@ class Aesthetically {
     }
   }
 
-  /* 
+  /**
     Generate a style map
     (Private)
-    Parameters: StyleInfo: (Object) san object with the unicode offsets for the style
+    @param {object} StyleInfo - an object with the unicode offsets for the style
     e.g.
     {
         "upper": 0x1D56C,
         "lower": 0x1D586
     }
-    Returns: (Map) Map of ASCII characters to styled characters 
-            for a characrer set (upper, lower etc.)
+    @returns {Map} Map of ASCII characters to styled characters 
+            for a character set (upper, lower etc.)
     */
   static _generateMap(styleInfo) {
     const map = new Map();
@@ -222,15 +221,15 @@ class Aesthetically {
       styleInfo["lower"] = styleInfo["upper"];
     }
 
-    for (const charSet in Aesthetically.#charaters) {
+    for (const charSet in Aesthetically.#characters) {
       if (typeof styleInfo[charSet] != "number") continue;
-      for (const char of Aesthetically.#charaters[charSet]["chars"]) {
+      for (const char of Aesthetically.#characters[charSet]["chars"]) {
         if (hasExceptions) if (exceptions.includes(char)) continue;
         const code = char.codePointAt(0);
         const styledChar = String.fromCodePoint(
           code +
             styleInfo[charSet] -
-            Aesthetically.#charaters[charSet]["lower-bound"]
+            Aesthetically.#characters[charSet]["lower-bound"]
         );
         map.set(char, styledChar);
       }
@@ -238,11 +237,11 @@ class Aesthetically {
     return map;
   }
 
-  /* 
+  /**
     Converts styled text into unstyled text
 
-    Parameters: text: (String) text to transform
-    Returns: (String) unstyled text
+    @param {string} text - text to transform
+    @return {string} unstyled text
     */
   static unformat(text) {
     if (typeof Aesthetically.#styleReverseMap === "undefined")
@@ -255,16 +254,16 @@ class Aesthetically {
     return unformatted;
   }
 
-  /* 
+  /**
     Generate a style set used to convert styled text to ASCII
-    Parameters: (Optional) styleList: string[] of styles
+    @param {string[]} styleList - list of styles
     */
   static _generateReverseMap(...styleList) {
     let styles = {};
     if (styleList.length === 0) {
       styles = Aesthetically.styles;
-      for (const normalSet in Aesthetically.#charaters) {
-        const offset = Aesthetically.#charaters[normalSet]["lower-bound"];
+      for (const normalSet in Aesthetically.#characters) {
+        const offset = Aesthetically.#characters[normalSet]["lower-bound"];
         styles["normal"] = offset;
       }
     } else {
