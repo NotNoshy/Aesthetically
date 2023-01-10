@@ -1,6 +1,6 @@
 {
   "name": "aesthetically",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "A JavaScript module that makes text stylish.",
   "main": "dist/aesthetically.umd.js",
   "exports": {
